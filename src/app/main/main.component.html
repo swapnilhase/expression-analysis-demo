@@ -1,0 +1,114 @@
+<h2>Expression Analysis</h2>
+<br/>
+<div class="wrapper container">
+	<div class="col-md-8 col-sm-12 col-xs-12 video-content">
+		<video width="100%" height="auto" autoplay controls></video>
+		<canvas width="1280" height="720" style="display: none;"></canvas>
+		<button class="btn btn-primary col-sm-3 col-xs-5" *ngIf="!videoRecordingStarted" (click)="startVideoCapture()" type="button">Record</button>
+		<button class="btn btn-primary col-sm-3 col-xs-5" style="float:right;" (click)="analyzeVideo()" [disabled]="analysisInProgress" type="button">Submit</button>
+	</div>
+	<div class="col-md-4 col-sm-12 col-xs-12 frame">
+		<div class="chatTitle">Chat
+			<button class="minimizeChat btn-soft" (click)="toggleMinimizeChat()" type="button">-</button>
+			<button class="minimizeChat btn-soft" (click)="toggleMuteChat()" *ngIf="muteChat" alt="Unmute" type="button">
+				<img style="width:18px; height:auto;" src="https://cdn4.iconfinder.com/data/icons/miu/24/device-volume-loudspeaker-speaker-mute-glyph-128.png"/>
+			</button>
+			<button class="minimizeChat btn-soft" (click)="toggleMuteChat()" *ngIf="!muteChat" alt="Mute" type="button">
+				<img style="width:18px; height:auto;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/768px-Speaker_Icon.svg.png"/>
+			</button>
+		</div>
+        <ul class="chatbox">
+	        <li style="width:100%" *ngFor="let chat of chatMessages">
+	        	<div class="msj macro">
+	        		<div class="avatar">
+	        			<img class="img-circle" style="width:50px;height:auto;" src="data:image/png;base64,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" />
+	        		</div>
+        			<div class="text text-l"><p>{{chat.message}}</p>
+        				<p><small>{{chat.time}}</small></p>
+        			</div>
+	        	</div>
+	        </li>
+	        <br/>
+	        <li *ngIf="chatMessages.length > 0">
+	        	<button class="btn btn-primary col-sm-4 col-xs-6" (click)="resetChat()" type="button">Clear</button>
+	        </li>
+        </ul>
+        <div>
+            <div class="msj-rta macro" style="margin:auto">                        
+                <div class="text text-r" style="background:whitesmoke !important">
+                    <input class="mytext" placeholder="Type a message"/>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="col-md-8 col-sm-12 col-xs-12">
+    	<!-- <br/>
+	    <button class="btn btn-primary col-sm-4 col-xs-6" style="margin-bottom:30px;margin-left:-10px;" (click)="snapshot()" type="button">Chat Summary</button>
+	    <br/> -->
+	    <h3 style="text-align: center;">Chat Summary</h3>
+	    <hr/>
+	    <div class="agePanel col-sm-12 col-xs-12" *ngIf="age && gender && faceAnalysisCompleted">
+	    	<br/>
+	    	<div class="col-sm-4 col-xs-12"><img class="profilePic" src="" width="120" height="120"/></div>
+	    	<div class="col-sm-8 col-xs-12">
+		    	<div class="col-sm-5 col-xs-5">Approx. Age</div>
+		    	<div class="col-sm-7 col-xs-7">: &nbsp;&nbsp;&nbsp;{{age}} years</div>
+		    	<br/>
+		    	<div class="col-sm-5 col-xs-5">Gender</div>
+		    	<div class="col-sm-7 col-xs-7">: &nbsp;&nbsp;&nbsp;{{gender}}</div>
+		    	<br/>
+		    	<div class="col-sm-5 col-xs-5">Happiness Index</div>
+		    	<div class="col-sm-7 col-xs-7" *ngIf="!analysisResult" style="margin-bottom:20px;">: &nbsp;&nbsp; Not Available</div>
+		    	<div class="col-sm-7 col-xs-7" *ngIf="analysisResult">: &nbsp;&nbsp;
+		    		<div class="rating">
+		    			<div *ngIf="!analysisResult.happiness">
+							☆ ☆ ☆ ☆ ☆
+						</div>
+						<div *ngIf="analysisResult.happiness > 0 && analysisResult.happiness <= 20">
+							★ ☆ ☆ ☆ ☆
+						</div>
+						<div *ngIf="analysisResult.happiness > 20 && analysisResult.happiness <= 35">
+							★ ★ ☆ ☆ ☆
+						</div>
+						<div *ngIf="analysisResult.happiness > 35 && analysisResult.happiness <= 50">
+							★ ★ ★ ☆ ☆
+						</div>
+						<div *ngIf="analysisResult.happiness > 50 && analysisResult.happiness <= 70">
+							★ ★ ★ ★ ☆
+						</div>
+						<div *ngIf="analysisResult.happiness > 70">
+							★ ★ ★ ★ ★
+						</div>
+					</div>
+				</div>
+	    	</div>
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<div class="title">Logs<button class="minimize btn-soft" (click)="toggleMinimizeFooter()" type="button">-</button></div>
+	<div class="scrollPan">
+		<div *ngIf="analysisInProgress">
+			Video analysis is in progress... Please Wait...
+			<div *ngFor="let status of analysisStatus">
+				{{status}}
+			</div>
+		</div>
+		<div *ngIf="analysisCompleted && analysisResult">
+			<h4>Analysis Results </h4> 
+			<br>Anger 		: {{analysisResult.anger}} %
+			<br>Contempt 	: {{analysisResult.contempt}} %
+			<br>Disgust 	: {{analysisResult.disgust}} %
+			<br>Fear 		: {{analysisResult.fear}} %
+			<br>Happiness 	: {{analysisResult.happiness}} %
+			<br>Neutral 	: {{analysisResult.neutral}} %
+			<br>Sadness 	: {{analysisResult.sadness}} %
+			<br>Surprise 	: {{analysisResult.surprise}} %
+		</div>
+		<div *ngIf="age && gender && faceAnalysisCompleted">
+			<br>Age: {{age}} years
+			<br>Gender: {{gender}}
+		</div>
+	</div>
+</div>
