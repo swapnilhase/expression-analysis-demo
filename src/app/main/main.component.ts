@@ -143,7 +143,7 @@ export class MainComponent implements OnInit {
 
         setTimeout(function() {
             component.stopRecording();
-        }, 6000);
+        }, 5000);
     }
 
     stopRecording() {
@@ -196,7 +196,7 @@ export class MainComponent implements OnInit {
                     }
                 }
             );
-        }, 10000);
+        }, 10500);
     }
 
     processVideo(audioVideoWebMURL) {

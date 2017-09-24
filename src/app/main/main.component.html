@@ -4,7 +4,7 @@
 	<div class="col-md-8 col-sm-12 col-xs-12 video-content">
 		<video width="100%" height="auto" autoplay controls></video>
 		<canvas width="1280" height="720" style="display: none;"></canvas>
-		<button class="btn btn-primary col-sm-3 col-xs-5" *ngIf="!videoRecordingStarted" (click)="startVideoCapture()" type="button">Record</button>
+		<button class="btn btn-primary col-sm-3 col-xs-5" *ngIf="!videoRecordingStarted" (click)="startVideoCapture()" [disabled]="analysisInProgress" type="button">Record</button>
 		<button class="btn btn-primary col-sm-3 col-xs-5" style="float:right;" (click)="analyzeVideo()" [disabled]="analysisInProgress" type="button">Submit</button>
 	</div>
 	<div class="col-md-4 col-sm-12 col-xs-12 frame">
@@ -41,15 +41,13 @@
             </div>
         </div>
     </div>
-    <br/>
-    <div class="col-md-8 col-sm-12 col-xs-12">
+    <div class="col-md-8 col-sm-12 col-xs-12" style="margin-top:12px;" *ngIf="age && gender && faceAnalysisCompleted">
     	<!-- <br/>
 	    <button class="btn btn-primary col-sm-4 col-xs-6" style="margin-bottom:30px;margin-left:-10px;" (click)="snapshot()" type="button">Chat Summary</button>
 	    <br/> -->
-	    <h3 style="text-align: center;">Chat Summary</h3>
-	    <hr/>
-	    <div class="agePanel col-sm-12 col-xs-12" *ngIf="age && gender && faceAnalysisCompleted">
-	    	<br/>
+	    <div class="agePanel col-sm-12 col-xs-12">
+	    	<h3 style="text-align: center;">Chat Summary</h3>
+	    	<hr/>
 	    	<div class="col-sm-4 col-xs-12"><img class="profilePic" src="" width="120" height="120"/></div>
 	    	<div class="col-sm-8 col-xs-12">
 		    	<div class="col-sm-5 col-xs-5">Approx. Age</div>
