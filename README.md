@@ -1,28 +1,21 @@
 # ExpressionAnalysisDemo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
+`Expression Analysis Demo` captures a small video and processes the emotions of the user. Chatbot uses this data to demonstrate how we can show different responses to the user based on the emotions. It also shows the approximate age, gender and happiness index for the user. 
+This application makes use of `microsoft azure emotion api` for processing the video and returns a json object with percentages of different emotions from the video along with the facial analysis data.
+
+## Running this application on local machine
+
+Download the project and npm install in the project directory.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Demo
+This application is hosted on below URL for demo purpose.
+Follow the instruction given by the chat bot to go through the demo
+`https://swapnilhase.github.io/expression-analysis-demo/`
