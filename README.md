@@ -1,11 +1,11 @@
 # ExpressionAnalysisDemo
 
 `Expression Analysis Demo` captures a small video and processes the emotions of the user. Chatbot uses this data to demonstrate how we can show different responses to the user based on the emotions. It also shows the approximate age, gender and happiness index for the user. 
-This application makes use of `microsoft azure emotion api` for processing the video and returns a json object with percentages of different emotions from the video along with the facial analysis data.
+This application makes use of trial version of `microsoft azure emotion api` for processing the video and returns a json object with percentages of different emotions from the video along with the facial analysis data.
 
 ## Running this application on local machine
 
-Download the project and npm install in the project directory.
+Download the project and run `npm install` in the project directory.
 
 ## Development server
 
